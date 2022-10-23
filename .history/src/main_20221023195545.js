@@ -114,12 +114,11 @@ securityCodeMasked.on("accept", () => {
 
 const addButton = document.querySelector("#add-card")
 addButton.addEventListener("click", () => {
-  if (cardNameMasked.value.length === 0 | cardNumberMasked.value.length === 0 | expirationDateMasked.value.length === 0 | securityCodeMasked.value.length === 0){
+  if (cardNameMasked.value.length === 0) | (cardNumberMasked.value.length === 0) | (expirationDateMasked.value.length === 0) | (securityCodeMasked.value.length === 0){
     alert("Preencha os campos vazios!")
     return
-  } else {
-    alert("Cartão adicionado com sucesso!")
   }
+  alert("Cartão adicionado com sucesso!")
 })
 
 document.querySelector("form").addEventListener("submit", (event) => {

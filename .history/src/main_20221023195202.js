@@ -83,10 +83,11 @@ const securityCodeMasked = IMask(securityCode, securityCodePattern)
 
 // Atualização dos dados na imagem de cartão
 
-cardNameMasked.on("accept", () => {
+const cardHolder = document.querySelector("#card-holder")
+cardHolder.addEventListener("input", () => {
   const ccHolder = document.querySelector(".cc-holder .value")
   ccHolder.innerText =
-    cardNameMasked.value.length === 0 ? "EXEMPLO DE NOME" : cardNameMasked.value
+    cardHolder.value.length === 0 ? "EXEMPLO DE NOME" : cardHolder.value
 })
 
 cardNumberMasked.on("accept", () => {
@@ -114,12 +115,7 @@ securityCodeMasked.on("accept", () => {
 
 const addButton = document.querySelector("#add-card")
 addButton.addEventListener("click", () => {
-  if (cardNameMasked.value.length === 0 | cardNumberMasked.value.length === 0 | expirationDateMasked.value.length === 0 | securityCodeMasked.value.length === 0){
-    alert("Preencha os campos vazios!")
-    return
-  } else {
-    alert("Cartão adicionado com sucesso!")
-  }
+  alert("Cartão adicionado com sucesso!")
 })
 
 document.querySelector("form").addEventListener("submit", (event) => {
