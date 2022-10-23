@@ -1,0 +1,43 @@
+import IMask from "imask"
+import "./css/index.css"
+
+function setCardType(type) {
+  const colors = {
+    visa: ["#436D99", "#2D57F2"],
+    mastercard: ["#DF6F29", "#C69347"],
+    default: ["black", "gray"],
+  }
+
+  const ccBgColor01 = document
+    .querySelector(".cc-bg svg > g g:nth-child(1) path")
+    .setAttribute("fill", colors[type][0])
+  const ccBgColor02 = document
+    .querySelector(".cc-bg svg > g g:nth-child(2) path")
+    .setAttribute("fill", colors[type][1])
+  const ccLogo = document
+    .querySelector(".cc-logo span:nth-child(2) img")
+    .setAttribute("src", `cc-${type}.svg`)
+}
+globalThis.setCardType = setCardType
+
+const securityCode = document.querySelector("#security-code")
+const securityCodePattern = {
+  mask: "000",
+}
+const securityCodeMasked = IMask(securityCode, securityCodePattern)
+
+const expirationDate = document.querySelector("#expiration-date")
+const expirationDatePattern = {
+  mask: "MM{/}YY",
+  blocks: {
+    MM: {
+      mask: IMask.MaskedRange,
+      from: 1,
+      to: 12,
+    },
+    YY: {
+      
+    },
+  },
+}
+const expirationDateMasked = IMask(expirationDate, expirationDatePattern)
